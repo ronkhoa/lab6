@@ -7,7 +7,7 @@ def print_menu():
     print('3. Quit')
     print()
 
-
+# Ronald Nguyen
 def password_encode(user_password):
     encoded_pass = ''
     password_total = 0
@@ -17,6 +17,19 @@ def password_encode(user_password):
             password_total = password_total - 10
         encoded_pass += str(password_total)
     return encoded_pass
+
+
+def password_decode(password):
+    # Takes an input and uses a for loop to turn the input to an integer to subtract 3 to and then turns it back into a
+    # string where it is added to the user_password return.
+    user_password = ''
+    for i in range(len(password)):
+        if (int(password[i]) - 3) < 0:
+            user_password = user_password + str((int(password[i]) - 3) + 10)
+        else:
+            user_password = user_password + str(int(password[i]) - 3)
+    return user_password
+
 
 def main():
     user_choice = 1
@@ -31,7 +44,7 @@ def main():
             encoded_password = password_encode(user_password)
         elif user_choice == 2:
             print(f'The encoded password is {encoded_password}, and the original password is '
-                    f'{user_password}.')
+                    f'{password_decode(encoded_password)}.')
             print()
 
 if __name__ == '__main__':
